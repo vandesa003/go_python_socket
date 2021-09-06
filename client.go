@@ -9,15 +9,14 @@ import (
 )
 
 const (
-	connHost = "localhost"
-	connPort = "8080"
-	connType = "tcp"
+	addr     = "test.socket"
+	connType = "unix"
 )
 
 func main() {
 	// Start the client and connect to the server.
-	fmt.Println("Connecting to " + connType + " server " + connHost + ":" + connPort)
-	conn, err := net.Dial(connType, connHost+":"+connPort)
+	fmt.Println("Connecting to " + connType + " server " + addr)
+	conn, err := net.Dial(connType, addr)
 	if err != nil {
 		fmt.Println("Error connecting:", err.Error())
 		os.Exit(1)

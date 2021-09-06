@@ -10,16 +10,16 @@ import (
 
 // Application constants, defining host, port, and protocol.
 const (
-	connHost = "localhost"
-	connPort = "8080"
-	connType = "tcp"
+	addr     = "test.socket"
+	connType = "unix"
 )
 
 func main() {
-	fmt.Println("Starting " + connType + " server on " + connHost + ":" + connPort)
+	fmt.Println("Starting " + connType + " server on " + addr)
 
 	// Start the server and listen for incoming connections.
-	l, err := net.Listen(connType, connHost+":"+connPort)
+	// l, err := net.Listen(connType, connHost+":"+connPort)
+	l, err := net.Listen(connType, addr)
 	if err != nil {
 		fmt.Println("Error listening:", err.Error())
 		os.Exit(1)
